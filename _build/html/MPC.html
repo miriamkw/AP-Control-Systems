@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Predictive Control (MPC) &#8212; Artificial Pancreas Control Systems</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Other Control Philosophies" href="control-philosophies.html" />
+    <link rel="prev" title="PID Controller" href="PID.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Illustration.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Artificial Pancreas Control Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Artificial Pancreas Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   Introduction and background
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="BGC-management.html">
+   Blood Glucose Management
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PID.html">
+   PID Controller
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Model Predictive Control (MPC)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control-philosophies.html">
+   Other Control Philosophies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AP-systems-review.html">
+   AP Systems Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Further%20Research.html">
+   Further Research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citations.html">
+   All citations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/MPC.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/miriamkw/TK8111"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/miriamkw/TK8111/issues/new?title=Issue%20on%20page%20%2FMPC.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/miriamkw/TK8111/master?urlpath=tree/MPC.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glucose-prediction">
+   Glucose Prediction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-insulin-on-board">
+     Calculating insulin on board
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-future-glucose-levels-using-insulin-on-board">
+     Predicting Future Glucose Levels Using Insulin on Board
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-system-unit">
+   Control System Unit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advantages-and-disadvantages">
+   Advantages and Disadvantages
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advantages">
+     Advantages
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disadvantages">
+     Disadvantages
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Model Predictive Control (MPC)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#glucose-prediction">
+   Glucose Prediction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-insulin-on-board">
+     Calculating insulin on board
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicting-future-glucose-levels-using-insulin-on-board">
+     Predicting Future Glucose Levels Using Insulin on Board
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-system-unit">
+   Control System Unit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advantages-and-disadvantages">
+   Advantages and Disadvantages
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advantages">
+     Advantages
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disadvantages">
+     Disadvantages
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="model-predictive-control-mpc">
+<h1>Model Predictive Control (MPC)<a class="headerlink" href="#model-predictive-control-mpc" title="Permalink to this headline">¶</a></h1>
+<p>Model predictive control (MPC) systems, as the name implies, use models to predict future glucose levels, and the control system makes desicions based on this. It is a mathematical approach to the artificial pancreas problem, where one aim to model the insulin-glucose dynamics <span id="id1">[<a class="reference internal" href="citations.html#id5" title="Frederick Chee and Tyrone Fernando. Closed-Loop Control of Blood Glucose. Springer, 2007.">3</a>]</span>. We can split MPC control systems into three parts:</p>
+<ul class="simple">
+<li><p>A glucose prediction algorithm based on insulin-glucose dynamic models</p></li>
+<li><p>A control system unit to make optimal decisions based on future glucose level predictions</p></li>
+<li><p>Safety constraints on inputs, outputs and their rates of change <span id="id2">[<a class="reference internal" href="citations.html#id6" title="Ali Cinar and Kamuran Turksoy. Advances in Artificial Pancreas Systems Adaptive and Multivariable Predictive Control. Springer, 2018.">1</a>]</span></p></li>
+</ul>
+<p>For each time step, new predictions are made, and new decisions are made based on these predictions. Parameters of the insulin-glucose dynamics must be individually tuned. Also, there are several tunings to be made in the control system such as prediction horizon, correction horizon aggressiveness of corrections and glucose target area.</p>
+<div class="section" id="glucose-prediction">
+<h2>Glucose Prediction<a class="headerlink" href="#glucose-prediction" title="Permalink to this headline">¶</a></h2>
+<p>In this section we will create a simple glucose prediction function, using the assumption that the only factor that has an impact on the BGC is the insulin, and that we know the basal rate that keeps glucose levels stable in the patient, as well as the insulin sensitivity factor (ISF) [mmol/L/U]. In this prediction we only consider one time step, and one insulin injection. In production this calculation must be made for every time step,</p>
+<p>The predicted BGC t minutes after the referenced BGC measurement can be expressed as</p>
+<p><span class="math notranslate nohighlight">\(
+BG(t) = BG_{ref} - ISF * \sum_{i=1}^{\frac{t}{T}} (IOB(i*T) - IOB(i*T - T))
+\)</span></p>
+<p>where T is the time interval between each BGC reading and insulin injection. <span class="math notranslate nohighlight">\(BG_{ref}\)</span> is the referenced BGC, and IOB(t) is the calculated insulin on board t minutes after the referenced time. In this calculation we are assuming that the ISF and basal rate is constant.</p>
+<div class="section" id="calculating-insulin-on-board">
+<span id="mpc-iob"></span><h3>Calculating insulin on board<a class="headerlink" href="#calculating-insulin-on-board" title="Permalink to this headline">¶</a></h3>
+<p>To calculate insulin on board one must first decide on how to model insulin activity of an insulin injection. There are many studies on how to do this, and will also depend on the type of insulin injected. In reality the optimal insulin activity might vary from person to person, and might also vary throughout the lifetime of the patient.</p>
+<p>In this example we will use a linear model where we define the total time of insulin effect as well as peak insulin effect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Static values: </span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Measurement interval in minutes</span>
+<span class="n">ISF</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># Insulin sensitivity factor [mmol/L/U]</span>
+<span class="n">basal_rate</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># [U/hr]</span>
+
+<span class="n">total_activity</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">60</span> <span class="c1"># Total time of insulin effect in minutes</span>
+<span class="n">peak_activity</span> <span class="o">=</span> <span class="mi">75</span> <span class="c1"># Time after insulin injection </span>
+<span class="n">insulin_delay</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># Delay for insulin absorption to start</span>
+
+<span class="c1"># Calculate the max value</span>
+<span class="n">max_val</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">total_activity</span> <span class="o">-</span> <span class="n">insulin_delay</span><span class="p">)</span>
+
+<span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_insulin_activity</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="c1"># Returns the percentage of insulin used per minute t minutes after insulin injection</span>
+    
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">insulin_delay</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span> 
+    <span class="k">elif</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">peak_activity</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">t</span><span class="o">*</span><span class="p">(</span><span class="n">max_val</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">peak_activity</span> <span class="o">-</span> <span class="n">insulin_delay</span><span class="p">)</span> <span class="o">-</span> <span class="n">insulin_delay</span><span class="o">*</span><span class="n">max_val</span><span class="o">/</span><span class="p">(</span><span class="n">peak_activity</span> <span class="o">-</span> <span class="n">insulin_delay</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">total_activity</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">t</span><span class="o">*</span><span class="n">max_val</span><span class="o">/</span><span class="p">(</span><span class="n">peak_activity</span> <span class="o">-</span> <span class="n">total_activity</span><span class="p">)</span> <span class="o">+</span> <span class="n">total_activity</span><span class="o">*</span><span class="n">max_val</span><span class="o">/</span><span class="p">(</span><span class="n">total_activity</span> <span class="o">-</span> <span class="n">peak_activity</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="mi">0</span>
+    
+<span class="c1"># Plot insulin activity</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="mi">70</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">calc_insulin_activity</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span> <span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Used insulin [%/min] over time in minutes&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/MPC_6_0.png" src="_images/MPC_6_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns the percentage insulin effect remaining t minutes after insulin injection</span>
+<span class="k">def</span> <span class="nf">remaining_insulin_effect</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">insulin_delay</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">100</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">peak_activity</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">100</span> <span class="o">-</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">insulin_delay</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">calc_insulin_activity</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">total_activity</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">max_val</span><span class="o">*</span><span class="p">(</span><span class="n">peak_activity</span> <span class="o">-</span> <span class="n">insulin_delay</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">peak_activity</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">calc_insulin_activity</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">max_val</span><span class="o">-</span><span class="n">calc_insulin_activity</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="mi">0</span>
+    
+<span class="c1"># Plot cumulative insulin effect</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="mi">70</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">remaining_insulin_effect</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span> <span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Remaining insulin effect [%] over time in minutes&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>     
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/MPC_7_0.png" src="_images/MPC_7_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="predicting-future-glucose-levels-using-insulin-on-board">
+<h3>Predicting Future Glucose Levels Using Insulin on Board<a class="headerlink" href="#predicting-future-glucose-levels-using-insulin-on-board" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example where an insulin dose is injected in beginning (marked in plot as a red circle)</span>
+
+<span class="n">BG_ref</span> <span class="o">=</span> <span class="mf">10.0</span> 
+<span class="n">insulin_dose</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ISF</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="c1"># Calculate the predicted BGC given only one insuin dose given in the initial time</span>
+<span class="k">def</span> <span class="nf">predicted_BG</span><span class="p">(</span><span class="n">t</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">BG_ref</span> <span class="o">-</span> <span class="n">ISF</span><span class="o">*</span><span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">remaining_insulin_effect</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="o">*</span><span class="n">insulin_dose</span><span class="o">/</span><span class="mi">100</span>
+
+<span class="c1"># Plot cumulative insulin effect</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="mi">70</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">predicted_BG</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">x</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">BG_ref</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicted glucose levels [mmol/L] over time in minutes&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/MPC_9_0.png" src="_images/MPC_9_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="control-system-unit">
+<h2>Control System Unit<a class="headerlink" href="#control-system-unit" title="Permalink to this headline">¶</a></h2>
+<p>According to <span id="id3">[<a class="reference internal" href="citations.html#id6" title="Ali Cinar and Kamuran Turksoy. Advances in Artificial Pancreas Systems Adaptive and Multivariable Predictive Control. Springer, 2018.">1</a>]</span>, the control system unit usually works as following: A control horizon is defined, and has to be shorter or equal to the glucose prediction horizon. For each timestep, one calculate an optimal sequence of future control actions by minimizing an objective function. The optimal dose for the current timestep is injected, and then a new optimization is calculated for the next timestep.</p>
+<div class="proof algorithm admonition" id="obj_min">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Minimize objective function)</p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Inputs</strong> Given a vector with <span class="math notranslate nohighlight">\(insulin\_injections\)</span> that impact future glucose levels, time interval <span class="math notranslate nohighlight">\(T\)</span> between each timestep, number of timesteps <span class="math notranslate nohighlight">\(n\)</span> in the prediction horizon, target BGC value <span class="math notranslate nohighlight">\(BG_{ref}\)</span></p>
+<p><strong>Output</strong> Compute optimal insulin injection in the given timestep to minimize objective function</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(dose\_min\_error \leftarrow \inf\)</span></p></li>
+<li><p>For dose in range(0, max_insulin, insulin_increment):</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(insulin\_injections[-1] = dose\)</span></p></li>
+<li><p>total_error = <span class="math notranslate nohighlight">\(\sum_{i=1}^{n} (BG\_prediction(i*T, insulin\_injections) - BG_{ref})^2\)</span></p></li>
+<li><p>If (<span class="math notranslate nohighlight">\(total\_error &lt; dose\_min\_error\)</span>):</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(dose\_min\_error \leftarrow total\_error\)</span></p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>return dose_min_error</p></li>
+</ol>
+</div>
+</div><p>One could add constraints to input and output values, as well as weight matrices to add more or less weight to differen time spans. In the algorithm above we have assumed control horizon with same length as prediction horizon.</p>
+</div>
+<div class="section" id="advantages-and-disadvantages">
+<h2>Advantages and Disadvantages<a class="headerlink" href="#advantages-and-disadvantages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="advantages">
+<h3>Advantages<a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h3>
+<p>An advantage of MPC is that it can be visually helpful for a patient to give insight into insulin-glucose dynamics. It is a simplification, which can also make it more understandable. It is also easy to manipulate, which can be an advantage when large deviations appear because of for example sickness. MPC is flexible in terms of adding complexities if the performance is not sufficient.</p>
+</div>
+<div class="section" id="disadvantages">
+<h3>Disadvantages<a class="headerlink" href="#disadvantages" title="Permalink to this headline">¶</a></h3>
+<p>The main disadvantage with MPC control is the high level of inter- and intravariability. The human body is very complex and cannot easily be modeled from what we know today. A possibility is to include high degrees of freedom in the control systems, but this demands more effort and expertise from the users of the system. Another disadvantage are the factors that impact BGC but are not measurable with the available technology. An example is stress, which is then not simple to model and include in the model.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="PID.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">PID Controller</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="control-philosophies.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Other Control Philosophies</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Miriam Kopperstad Wolff<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

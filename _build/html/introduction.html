@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -53,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
+    <link rel="next" title="Blood Glucose Management" href="BGC-management.html" />
     <link rel="prev" title="Artificial Pancreas Control Systems" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -76,6 +77,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Illustration.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Artificial Pancreas Control Systems</h1>
@@ -100,18 +106,38 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
+  <a class="reference internal" href="BGC-management.html">
+   Blood Glucose Management
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
+  <a class="reference internal" href="PID.html">
+   PID Controller
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="markdown-notebooks.html">
-   Notebooks with MyST Markdown
+  <a class="reference internal" href="MPC.html">
+   Model Predictive Control (MPC)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control-philosophies.html">
+   Other Control Philosophies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AP-systems-review.html">
+   AP Systems Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Further%20Research.html">
+   Further Research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citations.html">
+   All citations
   </a>
  </li>
 </ul>
@@ -171,11 +197,11 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/miriamkw/TK8111"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintroduction.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/miriamkw/TK8111/issues/new?title=Issue%20on%20page%20%2Fintroduction.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -326,36 +352,32 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="introduction-and-background">
 <h1>Introduction and background<a class="headerlink" href="#introduction-and-background" title="Permalink to this headline">¶</a></h1>
-<p>First intro:</p>
-<ul class="simple">
-<li><p>Summary of the whole report/section</p></li>
-</ul>
-<p>TO DO!!
-Add references correctly</p>
 <div class="section" id="what-is-diabetes-mellitus-type-1">
 <h2>What is diabetes mellitus type 1?<a class="headerlink" href="#what-is-diabetes-mellitus-type-1" title="Permalink to this headline">¶</a></h2>
-<p>Diabetes mellitus type 1 (T1D) is a metabolic disorder where the pancreas stops to produce and secrete insulin [2]. Followingly, insulin must be externally administered. This is traditionally done through subcutaneous infusion (SI). The disease can develop at any age, but the peak age for the diagnosis is 13 or 14 years old. According to the World Health Organization, there were 9 million people in the world diagnosed with T1D in 2017 [3]. The cause and how to prevent it is still unknown.</p>
+<p>Diabetes mellitus type 1 (T1D) is a metabolic disorder where the pancreas stops to produce and secrete insulin <span id="id1">[<a class="reference internal" href="citations.html#id6" title="Ali Cinar and Kamuran Turksoy. Advances in Artificial Pancreas Systems Adaptive and Multivariable Predictive Control. Springer, 2018.">1</a>]</span>. Followingly, insulin must be externally administered. This is traditionally done through subcutaneous infusion (SI). The disease can develop at any age, but the peak age for the diagnosis is 13 or 14 years old. According to the World Health Organization, there were 9 million people in the world diagnosed with T1D in 2017 <span id="id2">[<a class="reference internal" href="citations.html#id12" title="Diabetes. URL: https://www.who.int/news-room/fact-sheets/detail/diabetes (visited on 2022-03-16).">2</a>]</span>. The cause and how to prevent it is still unknown.</p>
 <p>In non-diabetics, blood glucose concentration (BGC) lies steadily between around 4-9 mmol/l. Due to the high level of intra- and interpersonal variability in glucose-insulin dynamics it is nearly impossible to achieve the same level of stability in BGC for patients with T1D. The external factors of major impact on BGC are meals, physical activity (exercise), sleep and psychological stress (MESS), in descending order.</p>
 <p>T1D patients must continuously estimate their insulin demands. When over- or underestimations occur, this may lead to hypo- or hyperglycemia respectively. Hypoglycemia (BGC≤ 3.9 mmol/l) is an acute state that is symptomized by among others dizziness and can in worst case lead to diabetic coma or death. The treatment is intake of fast acting carbohydrates or glucagon injection. Hyperglycemia, on the other hand, causes long-term damage to the vascular system and increased risk of several health-related complications. Hyperglycemia is treated by insulin injections.</p>
 </div>
 <div class="section" id="historical-background">
 <h2>Historical background<a class="headerlink" href="#historical-background" title="Permalink to this headline">¶</a></h2>
 <p>Diabetes was already described in an Egyptian papyrus in 1550. Years went by where it remained an untreatable diagnosis. Arestaeus of Cappadocia painted the following horrific picture of the disease in the 2nd century:</p>
-<p>“Life is short, unpleasant and painful […]. If for a while they abstain from drinking, their mouth becomes parched and their body dry; the viscera seem scorched up, the patients are affected by nausea, restlessness and a burning thirst and within a short time, they expire.” (Adapted from [4]).</p>
+<blockquote>
+<div><p>“Life is short, unpleasant and painful […]. If for a while they abstain from drinking, their mouth becomes parched and their body dry; the viscera seem scorched up, the patients are affected by nausea, restlessness and a burning thirst and within a short time, they expire.” (Adapted from <span id="id3">[<a class="reference internal" href="citations.html#id5" title="Frederick Chee and Tyrone Fernando. Closed-Loop Control of Blood Glucose. Springer, 2007.">3</a>]</span>).</p>
+</div></blockquote>
 <p>Thankfully, diabetes patients must no longer face such a destiny. After years and years of experimentation and research, insulin was successfully extracted from animals in 1920 and proved efficient in regulating the BGC.</p>
 <p>The traditional approach for injecting insulin was using insulin pens for delivering discrete amounts of insulin. Later came the insulin pump for continuous glucose management which as of today is a common treatment method for patients with T1D. BGC measurements evolved from using a drop of blood for a single measurement to continuous glucose monitoring (CGM) systems. Recent technology for diabetes management has opened doors to create artificial pancreas (AP) systems. In 2017 the first hybrid closed-loop AP was released by Medtronic, named MiniMed 670G. This system has automated insulin delivery (AID) but require at least manual meal and exercise information.</p>
-<p>The development of a fully closed-loop AP will require further research. Major challenges today consist of the slow dynamics of SI of insulin, delay in glucose measurements and the high level of individuality in glucose-insulin dynamics. Potential improvements that are being researched are dual hormone systems [5] (continuous infusion of both insulin and glucagon) and intraperitoneal (IP) injection of insulin. Companies are also collecting patient data to perform data analysis to determine insulin demands. These are just some of many initiatives that might contribute to achieving fully AID AP systems in the future.</p>
+<p>The development of a fully closed-loop AP, without any manual inputs from the user, will require further research. Major challenges today consist of the slow dynamics of SI of insulin, delay in glucose measurements and the high level of individuality in glucose-insulin dynamics. Potential improvements that are being researched are dual hormone systems <span id="id4">[<a class="reference internal" href="citations.html#id13" title="Catherina T. Pinnaro and Michael J. Tansey. The evolution of insulin administration in type 1 diabetes. Journal of Diabetes Mellitus, 2021.">4</a>]</span> (continuous infusion of both insulin and glucagon) and intraperitoneal (IP) injection of insulin. Companies are also collecting patient data to perform data analysis to determine insulin demands. These are just some of many initiatives that might contribute to achieving fully AID AP systems in the future.</p>
 </div>
 <div class="section" id="artificial-pancreas-control-systems">
 <h2>Artificial Pancreas Control Systems<a class="headerlink" href="#artificial-pancreas-control-systems" title="Permalink to this headline">¶</a></h2>
-<p>In this section we will describe the components of hybrid-loop AP systems and how they currently are working. Figure 1 illustrate how the components work together. A CGM is measuring BGC and sending the values to an AP control system. The AP control system can run inside of for example a smart phone. The patient must manually enter carbohydrate estimates for their meal intakes and make other corrections whenever necessary. Inputs could be extended to include other biometric sensor values to detect exercise or other disturbances on BGC, but such systems are currently not commercially available. The AP system calculates estimated insulin demands and performs insulin withdrawal or injections in the insulin pump. The example brands used in this section is based on the national agreement in Norway 2022 for equipment available for T1D patients [6].</p>
-<div class="figure align-default" id="id1">
+<p>In this section we will describe the components of hybrid-loop AP systems and how they currently are working.  <a class="reference internal" href="#illustration-description"><span class="std std-numref">Fig. 1</span></a> illustrates how the components work together. A CGM is measuring BGC and sending the values to an AP control system. The AP control system can run inside of for example a smart phone. The patient must manually enter carbohydrate estimates for their meal intakes and make other corrections whenever necessary. Inputs could be extended to include other biometric sensor values to detect exercise or other disturbances on BGC, but such systems are currently not commercially available. The AP system calculates estimated insulin demands and performs insulin withdrawal or injections in the insulin pump. The example brands used in this section is based on the national agreement in Norway 2022 for equipment available for T1D patients <span id="id5">[<a class="reference internal" href="citations.html#id14" title="Insulinpumper, cgm og forbruksmateriell. URL: https://sykehusinnkjop.no/nasjonale-avtaler/insulinpumper-cgm-og-forbruksmateriell-#produkter-pa-avtale (visited on 2022-01-26).">5</a>]</span>.</p>
+<div class="figure align-default" id="illustration-description">
 <img alt="_images/Illustration_description.png" src="_images/Illustration_description.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Model of an artificial pancreas system. (A) External factors like meals, exercise, stress and sleep (MESS) impact the BGC of a (B) T1D patient. (C) A CGM measures the BGC and sends it to the (E) AP control system. The control system calculates the estimated insulin requirement and provokes an injection in the (D) insulin pump.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Model of an artificial pancreas system. (A) External factors like meals, exercise, stress and sleep (MESS) impact the BGC of a (B) T1D patient. (C) A CGM measures the BGC and sends it to the (E) AP control system. The control system calculates the estimated insulin requirement and provokes an injection in the (D) insulin pump.</span><a class="headerlink" href="#illustration-description" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="continuous-glucose-monitor">
 <h3>Continuous Glucose Monitor<a class="headerlink" href="#continuous-glucose-monitor" title="Permalink to this headline">¶</a></h3>
-<p>Continuous glucose monitors are injected under the skin and is attached to the body. Depending on the manufacturer the patient must switch the injection site every 10-14 days. In commercially available products today, new readings are typically available every 5 minutes. There is a delay between actual BGC and the glucose concentration measured by the CGM in the interstitial fluid of approximately 3-12 minutes. The accuracy of the readings varies between brands, but here we will be using Dexcom G6 as an example. This CGM has an overall MARD  of 9%, and 83.3% of the readings are within ±15%  [7].</p>
+<p>Continuous glucose monitors are injected under the skin and is attached to the body. Depending on the manufacturer the patient must switch the injection site every 10-14 days. In commercially available products today, new readings are typically available every 5 minutes. There is a delay between actual BGC and the glucose concentration measured by the CGM in the interstitial fluid of approximately 3-12 minutes. The accuracy of the readings varies between brands, but here we will be using Dexcom G6 as an example. This CGM has an overall MARD  of 9%, and 83.3% of the readings are within ±15% <span id="id6">[<a class="reference internal" href="citations.html#id15" title="Discover dexcom continuous glucose monitoring (cgm) technology. URL: https://provider.dexcom.com/dexcom-cgm (visited on 2022-03-20).">6</a>]</span>.</p>
 </div>
 <div class="section" id="insulin-pump">
 <h3>Insulin Pump<a class="headerlink" href="#insulin-pump" title="Permalink to this headline">¶</a></h3>
@@ -438,10 +460,10 @@ Add references correctly</p>
             <p class="prev-next-title">Artificial Pancreas Control Systems</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="markdown.html" title="next page">
+    <a class='right-next' id="next-link" href="BGC-management.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title">Blood Glucose Management</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

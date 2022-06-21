@@ -6,6 +6,9 @@ root: intro
 chapters:
 - file: introduction
 - file: BGC-management
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: PID
+- file: MPC
+- file: control-philosophies
+- file: AP-systems-review
+- file: Further Research
+- file: citations

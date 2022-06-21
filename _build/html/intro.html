@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -75,6 +76,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Illustration.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Artificial Pancreas Control Systems</h1>
@@ -104,18 +110,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
+  <a class="reference internal" href="PID.html">
+   PID Controller
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
+  <a class="reference internal" href="MPC.html">
+   Model Predictive Control (MPC)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="markdown-notebooks.html">
-   Notebooks with MyST Markdown
+  <a class="reference internal" href="control-philosophies.html">
+   Other Control Philosophies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AP-systems-review.html">
+   AP Systems Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Further%20Research.html">
+   Further Research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citations.html">
+   All citations
   </a>
  </li>
 </ul>
@@ -175,11 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/miriamkw/TK8111"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/miriamkw/TK8111/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -274,7 +295,6 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>TK8111, Spring 2022<a class="headerlink" href="#tk8111-spring-2022" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="miriam-kopperstad-wolff">
 <h3>Miriam Kopperstad Wolff<a class="headerlink" href="#miriam-kopperstad-wolff" title="Permalink to this headline">¶</a></h3>
-<p><img alt="Illustration of an artificial pancreas system" src="_images/Illustration.png" /></p>
 </div>
 </div>
 <div class="section" id="content">
@@ -283,9 +303,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction and background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BGC-management.html">Blood Glucose Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PID.html">PID Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MPC.html">Model Predictive Control (MPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="control-philosophies.html">Other Control Philosophies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AP-systems-review.html">AP Systems Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Further%20Research.html">Further Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citations.html">All citations</a></li>
 </ul>
 </div>
 </div>

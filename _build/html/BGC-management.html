@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -53,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
+    <link rel="next" title="PID Controller" href="PID.html" />
     <link rel="prev" title="Introduction and background" href="introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -76,6 +77,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Illustration.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Artificial Pancreas Control Systems</h1>
@@ -105,18 +111,33 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
+  <a class="reference internal" href="PID.html">
+   PID Controller
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Content with notebooks
+  <a class="reference internal" href="MPC.html">
+   Model Predictive Control (MPC)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="markdown-notebooks.html">
-   Notebooks with MyST Markdown
+  <a class="reference internal" href="control-philosophies.html">
+   Other Control Philosophies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AP-systems-review.html">
+   AP Systems Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Further%20Research.html">
+   Further Research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citations.html">
+   All citations
   </a>
  </li>
 </ul>
@@ -160,9 +181,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/BGC-management.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/BGC-management.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -176,11 +197,11 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/miriamkw/TK8111"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FBGC-management.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/miriamkw/TK8111/issues/new?title=Issue%20on%20page%20%2FBGC-management.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -195,6 +216,23 @@ const thebe_selector_output = ".output, .cell_output"
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/miriamkw/TK8111/master?urlpath=tree/BGC-management.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -229,6 +267,11 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#menstrual-cycle">
+   Menstrual Cycle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#insulin">
    Insulin
   </a>
@@ -237,6 +280,13 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#glucose-sensors">
    Glucose Sensors
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-grid-analysis">
+     Error Grid Analysis
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -281,6 +331,11 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#menstrual-cycle">
+   Menstrual Cycle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#insulin">
    Insulin
   </a>
@@ -289,6 +344,13 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal nav-link" href="#glucose-sensors">
    Glucose Sensors
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-grid-analysis">
+     Error Grid Analysis
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -301,13 +363,13 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="blood-glucose-management">
 <h1>Blood Glucose Management<a class="headerlink" href="#blood-glucose-management" title="Permalink to this headline">¶</a></h1>
-<p>Blood glucose dynamics are highly individual and varying from day to day. However, some significant disturbances have been classified. In this section we will explain the dynamics of the most significant factors affecting blood glucose levels. Modelling of these factors will help predicting future blood glucose levels and improve decision making.</p>
+<p>Blood glucose dynamics are highly individual and varying from day to day. Factors such as meals, exercise, stress and sleep (MESS) have an impact. For women, hormones released during different phases in the menstrual cycle will also have an impact. In this section we will explain the dynamics of the most significant factors affecting blood glucose levels.</p>
 <div class="section" id="mess">
 <h2>MESS<a class="headerlink" href="#mess" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="meals">
 <h3>Meals<a class="headerlink" href="#meals" title="Permalink to this headline">¶</a></h3>
 <p>Food intake will increase BGC. The effect usually lasts for 2-4 hours. Patients with T1D must inject insulin with respect to meals to countereffect the increase and avoid hyperglycemia. Intra- and interindividual variabilities in meal-glucose effects complicates the estimations of bolus doses necessary to keep BGC inside of target range. However, there is a correlation between the amount of carbohydrates consumed, and the total increase in BGC. Standard insulin pump therapy uses carbohydrate counting estimates to predict necessary insulin doses.</p>
-<p>There has been made various attempts on creating linear meal absorption models. They differ in which factors that are included in the models, for example number of carbohydrates, number of other macronutrients, stomach and gastric emptying and absorption rate [8]. In addition, attempts have been made to personalize meal absorption models using historical data [9], expressed as differential equation. The open-source AP system named Loop is using a dynamic carbohydrate absorption model where carbohydrate effects are not modelled with differential equations, but using the expected changes in BGC compared to observed changes in BGC [10].</p>
+<p>There has been made various attempts on creating linear meal absorption models. They differ in which factors that are included in the models, for example number of carbohydrates, number of other macronutrients, stomach and gastric emptying and absorption rate <span id="id1">[<a class="reference internal" href="citations.html#id17" title="Eira Mørch-Thoresen. Review of the effect of meals on the glucose-insulin regulatory system. 2021. URL: https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2781065 (visited on 2022-03-16).">7</a>]</span>. In addition, attempts have been made to personalize meal absorption models using historical data <span id="id2">[<a class="reference internal" href="citations.html#id18" title="Fraser Cameron, Rensselaer Polytechnic Institute, Nihat Baysal, and B. Wayne Bequette. A differential simulator using past clinical trial data to run simulated clinical trials. IEEE, 2015.">8</a>]</span>, expressed as differential equation. The open-source AP system named Loop is using a dynamic carbohydrate absorption model where carbohydrate effects are not modelled with differential equations, but using the expected changes in BGC compared to observed changes in BGC <span id="id3">[<a class="reference internal" href="citations.html#id19" title="Carbohydrate effect. URL: https://loopkit.github.io/loopdocs/operation/algorithm/prediction/#carbohydrate-effect (visited on 2022-03-16).">9</a>]</span>.</p>
 </div>
 <div class="section" id="exercise-and-stress">
 <h3>Exercise and Stress<a class="headerlink" href="#exercise-and-stress" title="Permalink to this headline">¶</a></h3>
@@ -315,26 +377,74 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="sleep">
 <h3>Sleep<a class="headerlink" href="#sleep" title="Permalink to this headline">¶</a></h3>
-<p>The effect of sleep on BGC is called the dawn phenomenon. Insulin demand typically increases in the morning, and breakfast tent to require more insulin per carbohydrate than other meals. This can be considered by increase the basal rate in the early morning, but also keeping in the back of the mind that sleep patterns might vary. Perriello <a class="reference external" href="http://et.al">et.al</a> [11] states that the magnitude of the dawn phenomenon is approximately ~20% in T1D patients, it is reproducible and influenced by some known factors. Hence, there is potential for this to be taken account for in an AP system.</p>
+<p>The effect of sleep on BGC is called the dawn phenomenon. Insulin demand typically increases in the morning, and breakfast tent to require more insulin per carbohydrate than other meals. This can be considered by increase the basal rate in the early morning, but also keeping in the back of the mind that sleep patterns might vary. Perriello et al. <span id="id4">[<a class="reference internal" href="citations.html#id20" title="G Perriello, P De Feo, E Torlone, C Fanelli, F Santeusanio, P Brunetti, and G B Bolli. The dawn phenomenon in type 1 (insulin-dependent) diabetes mellitus: magnitude, frequency, variability, and dependency on glucose counterregulation and insulin sensitivity. Diabetologia, 1991.">10</a>]</span> states that the magnitude of the dawn phenomenon is approximately ~20% in T1D patients, it is reproducible and influenced by some known factors. Hence, there is potential for this to be taken account for in an AP system.</p>
 </div>
+</div>
+<div class="section" id="menstrual-cycle">
+<h2>Menstrual Cycle<a class="headerlink" href="#menstrual-cycle" title="Permalink to this headline">¶</a></h2>
+<p>Up to two thirds of women experience menstrual phenomenon <span id="id5">[<a class="reference internal" href="citations.html#id28" title="A. Shahid and D.M. Lewis. Large-Scale Data Analysis for Glucose Variability Outcomes with Open-Source Automated Insulin Delivery Systems. Nutrients, 2022. doi:10.3390/nu14091906.">11</a>]</span>. This consists in changing insulin sensitivities throughout the month. The release of hormones increases the insulin resistance. However, the effect is not very well studied and further analysis should be done to better understand it.</p>
 </div>
 <div class="section" id="insulin">
 <h2>Insulin<a class="headerlink" href="#insulin" title="Permalink to this headline">¶</a></h2>
 <p>Insulin has a decreasing effect on BGC. Duration and absorption pattern depends on the type of insulin injected. Traditional treatment of diabetes consists in injecting discrete amounts of insulin with an insulin pen or continuously with an insulin pump. AP systems require insulin pump therapy, so in this report we will highlight the specifications of insulin types suitable for insulin pumps.</p>
-<p>In a person without diabetes, the pancreas will release insulin due to changes in BGC, and the insulin will immediately be absorbed. When insulin is injected through the subcutaneous tissue, however, there is a delay in insulin absorption. For rapid acting insulin, this delay is approximately 15 minutes. The peak effect is after 30 to 180 minutes, and the effect lasts in the body for at least 180 minutes [12]. These dynamics are slow compared to a non-diabetic human, which complicates AP systems. The effect of insulin or withholding insulin will often come too late leading to hypo- or hyperglycemia. Extensive research is being made to discover ways for insulin to be absorbed more quickly, leading to an ultra-rapid insulin type named Fiasp. This insulin type has a start effect after 0-2 minutes. Unfortunately patients have experienced problems like inflammation and insulin resistance using this type of insulin in insulin pumps [13]. More experimental patients are going off-label leading to interesting results. Patients are mixing insulin types and experiencing the benefits of both insulin types, through tips on social media [14]. This is not recommended by the insulin manufacturer.</p>
-<p>Insulin on board (IOB) is a common way to calculate how much active insulin the patient has in the body at a given time. An estimate of how much insulin that is absorbed after a given amount of time is expressed by mathematical equations. These curves differ in shape and in delay, peak activity time and the total time of effect. For each insulin injection, the remaining amount at a given time is calculated. IOB is a useful tool in AP systems to predict future BGC.</p>
-<p>TO DO: REFER TO JUPYTER NOTEBOOK</p>
+<p>In a person without diabetes, the pancreas will release insulin due to changes in BGC, and the insulin will immediately be absorbed. When insulin is injected through the subcutaneous tissue, however, there is a delay in insulin absorption. For rapid acting insulin, this delay is approximately 15 minutes. The peak effect is after 30 to 180 minutes, and the effect lasts in the body for at least 180 minutes <span id="id6">[<a class="reference internal" href="citations.html#id21" title="Hvilken typer insulin finnes? URL: https://www.diabetes.no/diabetes-type-2/behandling/insulinbehandling-og-type-2/#section6 (visited on 2022-03-16).">12</a>]</span>. These dynamics are slow compared to a non-diabetic human, which complicates AP systems. The effect of insulin or withholding insulin will often come too late leading to hypo- or hyperglycemia. Extensive research is being made to discover ways for insulin to be absorbed more quickly, leading to an ultra-rapid insulin type named Fiasp. This insulin type has a start effect after 0-2 minutes. Unfortunately patients have experienced problems like inflammation and insulin resistance using this type of insulin in insulin pumps <span id="id7">[<a class="reference internal" href="citations.html#id22" title="Fiasp flaws: are faster insulins worth it? URL: https://diabetesvoice.org/en/news/fiasp-flaws-are-faster-insulins-worth-it/ (visited on 2022-03-16).">13</a>]</span>. More experimental patients are going off-label leading to interesting results. Patients are mixing insulin types and experiencing the benefits of both insulin types, through tips on social media <span id="id8">[<a class="reference internal" href="citations.html#id23" title="Fiasp – going off-label. being intentionally non-compliant! URL: https://www.diabettech.com/diabetes/fiasp-going-off-label-being-intentionally-non-compliant/ (visited on 2022-03-16).">14</a>]</span>. This is not recommended by the insulin manufacturer.</p>
+<p>Insulin on board (IOB) is a common way to calculate how much active insulin the patient has in the body at a given time. An estimate of how much insulin that is absorbed after a given amount of time is expressed by mathematical equations. These curves differ in shape and in delay, peak activity time and the total time of effect. For each insulin injection, the remaining amount at a given time is calculated. IOB is a useful tool in AP systems to predict future BGC. Further description and implementation can be found in the <a class="reference internal" href="MPC.html#mpc-iob"><span class="std std-ref">chapter about model predictive control</span></a>.</p>
 </div>
 <div class="section" id="glucose-sensors">
 <h2>Glucose Sensors<a class="headerlink" href="#glucose-sensors" title="Permalink to this headline">¶</a></h2>
 <p>CGM sensors have been essential in the evolution of hybrid-loop AP systems. However, there is room for improvement that might prove beneficial. More frequent and accurate readings (Continuous Glucose Monitor) would improve glucose predictions. Time lag between the interstitial fluid and BGC slows down the dynamics of an AP system. This is especially problematic when BGC is rapidly changing, which might also be in combination with disturbances on accuracy such as exercise.</p>
-<p>Risks of glucose measurement errors can be analyzed using an error grid [1]. These plots (Figure 2) explains the risk of how different errors from true BGC can lead to faulty actions. In AP systems it is common to predict future glucose levels and make action based on the predictions. Therefore, the error grid risk-analysis might be applied to glucose predictions as well as BGC measurements.</p>
-<div class="figure align-default" id="id1">
+<div class="section" id="error-grid-analysis">
+<h3>Error Grid Analysis<a class="headerlink" href="#error-grid-analysis" title="Permalink to this headline">¶</a></h3>
+<p>Risks of glucose measurement errors can be analyzed using an error grid <span id="id9">[<a class="reference internal" href="citations.html#id16" title="Error grid analysis. 2017. URL: http://blog.profil.com/blog/error-grid-analysis (visited on 2022-03-20).">15</a>]</span>. These plots (<a class="reference internal" href="#error-grid"><span class="std std-numref">Fig. 2</span></a>) explain the risk of how different errors from true BGC can lead to different types of faulty actions. In AP systems it is common to predict future glucose levels and make action based on the predictions. Therefore, the error grid risk-analysis might be applied to glucose predictions as well as BGC measurements.</p>
+<div class="figure align-default" id="error-grid">
 <img alt="_images/error_grid.png" src="_images/error_grid.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Error Grid Analysis from (ADD REFERENCE)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Error Grid Analysis. Figure borrowed from <span id="id10">[<a class="reference internal" href="citations.html#id16" title="Error grid analysis. 2017. URL: http://blog.profil.com/blog/error-grid-analysis (visited on 2022-03-20).">15</a>]</span>.</span><a class="headerlink" href="#error-grid" title="Permalink to this image">¶</a></p>
 </div>
-<p>TO DO: PROVE THIS IN THE FORECAST ERROR APP!
-APPLY A KALMAN FILTER AND ANALYZE IMPROVEMENTS IN QUALITY OF PREDICTIONS!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implementation of error grid analysis</span>
+<span class="c1"># Using two lists of random numbers inside reasonable values for BGC measurements</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">reference_BG</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">measured_BG</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">BG_lower_lim</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">BG_upper_lim</span> <span class="o">=</span> <span class="mi">400</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">n1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">BG_lower_lim</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span><span class="n">BG_upper_lim</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span>
+    <span class="n">reference_BG</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">)</span> <span class="o">-</span> <span class="mi">75</span>
+    <span class="k">if</span> <span class="n">n2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">measured_BG</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n2</span> <span class="o">&gt;</span> <span class="mi">400</span><span class="p">:</span>
+        <span class="n">measured_BG</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">measured_BG</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ClarkeErrorGrid from https://github.com/suetAndTie/ClarkeErrorGrid</span>
+<span class="kn">from</span> <span class="nn">ClarkeErrorGrid</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">clarke_error_grid</span><span class="p">(</span><span class="n">reference_BG</span><span class="p">,</span> <span class="n">measured_BG</span><span class="p">,</span> <span class="s2">&quot;Example&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;module &#39;matplotlib.pyplot&#39; from &#39;/opt/homebrew/lib/python3.9/site-packages/matplotlib/pyplot.py&#39;&gt;,
+ [60, 38, 0, 2, 0])
+</pre></div>
+</div>
+<img alt="_images/BGC-management_2_1.png" src="_images/BGC-management_2_1.png" />
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -370,10 +480,10 @@ APPLY A KALMAN FILTER AND ANALYZE IMPROVEMENTS IN QUALITY OF PREDICTIONS!</p>
             <p class="prev-next-title">Introduction and background</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="markdown.html" title="next page">
+    <a class='right-next' id="next-link" href="PID.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title">PID Controller</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

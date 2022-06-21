@@ -3,7 +3,7 @@
 
 title: Artificial Pancreas Control Systems
 author: Miriam Kopperstad Wolff
-#logo: img/Illustration.png
+logo: img/Illustration.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -19,10 +19,16 @@ latex:
 bibtex_bibfiles:
   - references.bib
 
+sphinx:
+  # Citation style
+  config:
+    bibtex_reference_style: label
+  extra_extensions: 
+    - sphinx_proof
+
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
+  url: https://github.com/miriamkw/TK8111  # Online location of your book
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book

@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All citations &#8212; Artificial Pancreas Control Systems</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Further Research" href="Further%20Research.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Illustration.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Artificial Pancreas Control Systems</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Artificial Pancreas Control Systems
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   Introduction and background
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="BGC-management.html">
+   Blood Glucose Management
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PID.html">
+   PID Controller
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MPC.html">
+   Model Predictive Control (MPC)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control-philosophies.html">
+   Other Control Philosophies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AP-systems-review.html">
+   AP Systems Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Further%20Research.html">
+   Further Research
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   All citations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/citations.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/miriamkw/TK8111"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/miriamkw/TK8111/issues/new?title=Issue%20on%20page%20%2Fcitations.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>All citations</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="all-citations">
+<h1>All citations<a class="headerlink" href="#all-citations" title="Permalink to this headline">¶</a></h1>
+<p id="id1"><dl class="citation">
+<dt class="label" id="id6"><span class="brackets">1</span></dt>
+<dd><p>Ali Cinar and Kamuran Turksoy. <em>Advances in Artificial Pancreas Systems Adaptive and Multivariable Predictive Control</em>. Springer, 2018.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets">2</span></dt>
+<dd><p>Diabetes. URL: <a class="reference external" href="https://www.who.int/news-room/fact-sheets/detail/diabetes">https://www.who.int/news-room/fact-sheets/detail/diabetes</a> (visited on 2022-03-16).</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">3</span></dt>
+<dd><p>Frederick Chee and Tyrone Fernando. <em>Closed-Loop Control of Blood Glucose</em>. Springer, 2007.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets">4</span></dt>
+<dd><p>Catherina T. Pinnaro and Michael J. Tansey. The evolution of insulin administration in type 1 diabetes. <em>Journal of Diabetes Mellitus</em>, 2021.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets">5</span></dt>
+<dd><p>Insulinpumper, cgm og forbruksmateriell. URL: <a class="reference external" href="https://sykehusinnkjop.no/nasjonale-avtaler/insulinpumper-cgm-og-forbruksmateriell-#produkter-pa-avtale">https://sykehusinnkjop.no/nasjonale-avtaler/insulinpumper-cgm-og-forbruksmateriell-#produkter-pa-avtale</a> (visited on 2022-01-26).</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets">6</span></dt>
+<dd><p>Discover dexcom continuous glucose monitoring (cgm) technology. URL: <a class="reference external" href="https://provider.dexcom.com/dexcom-cgm">https://provider.dexcom.com/dexcom-cgm</a> (visited on 2022-03-20).</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets">7</span></dt>
+<dd><p>Eira Mørch-Thoresen. Review of the effect of meals on the glucose-insulin regulatory system. 2021. URL: <a class="reference external" href="https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2781065">https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2781065</a> (visited on 2022-03-16).</p>
+</dd>
+<dt class="label" id="id18"><span class="brackets">8</span></dt>
+<dd><p>Fraser Cameron, Rensselaer Polytechnic Institute, Nihat Baysal, and B. Wayne Bequette. A differential simulator using past clinical trial data to run simulated clinical trials. <em>IEEE</em>, 2015.</p>
+</dd>
+<dt class="label" id="id19"><span class="brackets">9</span></dt>
+<dd><p>Carbohydrate effect. URL: <a class="reference external" href="https://loopkit.github.io/loopdocs/operation/algorithm/prediction/#carbohydrate-effect">https://loopkit.github.io/loopdocs/operation/algorithm/prediction/#carbohydrate-effect</a> (visited on 2022-03-16).</p>
+</dd>
+<dt class="label" id="id20"><span class="brackets">10</span></dt>
+<dd><p>G Perriello, P De Feo, E Torlone, C Fanelli, F Santeusanio, P Brunetti, and G B Bolli. The dawn phenomenon in type 1 (insulin-dependent) diabetes mellitus: magnitude, frequency, variability, and dependency on glucose counterregulation and insulin sensitivity. <em>Diabetologia</em>, 1991.</p>
+</dd>
+<dt class="label" id="id28"><span class="brackets">11</span></dt>
+<dd><p>A. Shahid and D.M. Lewis. Large-Scale Data Analysis for Glucose Variability Outcomes with Open-Source Automated Insulin Delivery Systems. <em>Nutrients</em>, 2022. <a class="reference external" href="https://doi.org/10.3390/nu14091906">doi:10.3390/nu14091906</a>.</p>
+</dd>
+<dt class="label" id="id21"><span class="brackets">12</span></dt>
+<dd><p>Hvilken typer insulin finnes? URL: <a class="reference external" href="https://www.diabetes.no/diabetes-type-2/behandling/insulinbehandling-og-type-2/#section6">https://www.diabetes.no/diabetes-type-2/behandling/insulinbehandling-og-type-2/#section6</a> (visited on 2022-03-16).</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets">13</span></dt>
+<dd><p>Fiasp flaws: are faster insulins worth it? URL: <a class="reference external" href="https://diabetesvoice.org/en/news/fiasp-flaws-are-faster-insulins-worth-it/">https://diabetesvoice.org/en/news/fiasp-flaws-are-faster-insulins-worth-it/</a> (visited on 2022-03-16).</p>
+</dd>
+<dt class="label" id="id23"><span class="brackets">14</span></dt>
+<dd><p>Fiasp – going off-label. being intentionally non-compliant! URL: <a class="reference external" href="https://www.diabettech.com/diabetes/fiasp-going-off-label-being-intentionally-non-compliant/">https://www.diabettech.com/diabetes/fiasp-going-off-label-being-intentionally-non-compliant/</a> (visited on 2022-03-16).</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets">15</span></dt>
+<dd><p>Error grid analysis. 2017. URL: <a class="reference external" href="http://blog.profil.com/blog/error-grid-analysis">http://blog.profil.com/blog/error-grid-analysis</a> (visited on 2022-03-20).</p>
+</dd>
+<dt class="label" id="id2"><span class="brackets">16</span></dt>
+<dd><p>Proportional-only control. URL: <a class="reference external" href="https://apmonitor.com/pdc/index.php/Main/ProportionalControl">https://apmonitor.com/pdc/index.php/Main/ProportionalControl</a> (visited on 2022-03-16).</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">17</span></dt>
+<dd><p>Proportional integral (pi). URL: <a class="reference external" href="https://apmonitor.com/pdc/index.php/Main/ProportionalIntegralControl">https://apmonitor.com/pdc/index.php/Main/ProportionalIntegralControl</a> (visited on 2022-03-16).</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">18</span></dt>
+<dd><p>Proportional integral derivative (pid). URL: <a class="reference external" href="https://apmonitor.com/pdc/index.php/Main/ProportionalIntegralDerivative">https://apmonitor.com/pdc/index.php/Main/ProportionalIntegralDerivative</a> (visited on 2022-03-16).</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">19</span></dt>
+<dd><p>Eric Renard, Guy Costalat, Hugues Chevassus, and Jacques Bringer. Closed loop insulin delivery using implanted insulin pumps and sensors in type 1 diabetic patients. <em>Diabetes Research and Clinical Practice</em>, 2006.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">20</span></dt>
+<dd><p>Garry M. Steil. Algorithms for a closed-loop artificial pancreas: the case for proportional-integral-derivative control. <em>Journal of Diabetes Science and Technology</em>, 2013.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">21</span></dt>
+<dd><p>Sun Joon Moon, Inha Jung, and Cheol-Young Park. Current advances of artificial pancreas systems: a comprehensive review of the clinical evidence. <em>Diabetes &amp; Metabolism Journal</em>, 2021.</p>
+</dd>
+<dt class="label" id="id25"><span class="brackets">22</span></dt>
+<dd><p>Autotune. URL: <a class="reference external" href="https://openaps.readthedocs.io/en/latest/docs/Customize-Iterate/autotune.html">https://openaps.readthedocs.io/en/latest/docs/Customize-Iterate/autotune.html</a> (visited on 2022-04-05).</p>
+</dd>
+<dt class="label" id="id26"><span class="brackets">23</span></dt>
+<dd><p>Auto-sensitivity mode (autosens). URL: <a class="reference external" href="https://openaps.readthedocs.io/en/latest/docs/Customize-Iterate/autosens.html">https://openaps.readthedocs.io/en/latest/docs/Customize-Iterate/autosens.html</a> (visited on 2022-04-05).</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets">24</span></dt>
+<dd><p>#wearenotwaiting to reduce the burden of type 1 diabetes. URL: <a class="reference external" href="https://openaps.org/">https://openaps.org/</a> (visited on 2022-04-05).</p>
+</dd>
+<dt class="label" id="id29"><span class="brackets">25</span></dt>
+<dd><p>Chirath Hettiarachchi, Elena Daskalaki, Jane Desborough, Christopher J Nolan, David O’Neal, and Hanna Suominen. Integrating Multiple Inputs Into an Artificial Pancreas System: Narrative Literature Review. <em>JMIR Diabetes</em>, 7(1):e28861, February 2022. URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8914747/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8914747/</a> (visited on 2022-06-16), <a class="reference external" href="https://doi.org/10.2196/28861">doi:10.2196/28861</a>.</p>
+</dd>
+<dt class="label" id="id27"><span class="brackets">26</span></dt>
+<dd><p>Louisa van den Boom, Beate Karges, Marie Auzanneau, Birgit Rami-Merhar, Eggert Lilienthal, Simone von Sengbusch, Nicolin Datz, Carmen Schröder, Thomas Kapellen, Markus Laimer, Sebastian M. Schmid, Heiko Müller, Johannes Wolf, and Reinhard W. Holl. Temporal Trends and Contemporary Use of Insulin Pump Therapy and Glucose Monitoring Among Children, Adolescents, and Adults With Type 1 Diabetes Between 1995 and 2017. <em>Diabetes Care</em>, 42(11):2050–2056, September 2019. URL: <a class="reference external" href="https://doi.org/10.2337/dc19-0345">https://doi.org/10.2337/dc19-0345</a> (visited on 2022-06-19), <a class="reference external" href="https://doi.org/10.2337/dc19-0345">doi:10.2337/dc19-0345</a>.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">27</span></dt>
+<dd><p>Lutz Heinemann and Karin Lange. “do it yourself” (diy)—automated insulin delivery (aid) systems: current status from a german point of view. <em>Journal of Diabetes Science and Technology</em>, 2019.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets">28</span></dt>
+<dd><p>John W. Lum, Ryan J. Bailey, Victoria Barnes-Lomen, Diana Naranjo, Korey K. Hood, Rayhan A. Lal, Brandon Arbiter, Adam S. Brown, Daniel J. DeSalvo, Jeremy Pettus, Peter Calhoun, and Roy W. Beck. A Real-World Prospective Study of the Safety and Effectiveness of the Loop Open Source Automated Insulin Delivery System. <em>Diabetes Technology &amp; Therapeutics</em>, 23(5):367–375, May 2021. URL: <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8080906/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8080906/</a> (visited on 2022-06-18), <a class="reference external" href="https://doi.org/10.1089/dia.2020.0535">doi:10.1089/dia.2020.0535</a>.</p>
+</dd>
+</dl>
+</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Further%20Research.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Further Research</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Miriam Kopperstad Wolff<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
